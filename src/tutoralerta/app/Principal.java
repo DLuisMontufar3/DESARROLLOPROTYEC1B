@@ -1,24 +1,18 @@
+
 package tutoralerta.app;
 
-import java.io.IOException;
-import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
-import tutoralerta.servicio.EstudianteServicio;
-import tutoralerta.vista.VentanaEstudiantes;
+import tutoralerta.vista.MenuPrincipal;
 
-// ARRANQUE TEMPORAL: abre solo la ventana de estudiantes.
 public class Principal {
 
     public static void main(String[] args) {
+
         SwingUtilities.invokeLater(() -> {
-            try {
-                EstudianteServicio servicio = new EstudianteServicio();
-                new VentanaEstudiantes(servicio).setVisible(true);
-            } catch (IOException ex) {
-                JOptionPane.showMessageDialog(null,
-                        "No se pudieron leer los datos: " + ex.getMessage(),
-                        "Error", JOptionPane.ERROR_MESSAGE);
-            }
+
+            MenuPrincipal menu = new MenuPrincipal();
+            menu.setVisible(true);
+
         });
     }
 }

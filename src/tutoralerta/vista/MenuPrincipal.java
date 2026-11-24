@@ -1,4 +1,5 @@
 
+
 package tutoralerta.vista;
 
 import java.awt.GridLayout;
@@ -16,11 +17,11 @@ public class MenuPrincipal extends JFrame {
     public MenuPrincipal() {
 
         setTitle("TutorAlerta - Menú principal");
-        setSize(450, 280);
+        setSize(450, 350);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        JPanel panel = new JPanel(new GridLayout(3, 1, 10, 15));
+        JPanel panel = new JPanel(new GridLayout(4, 1, 10, 15));
 
         JLabel titulo = new JLabel(
                 "Bienvenido a TutorAlerta",
@@ -32,6 +33,9 @@ public class MenuPrincipal extends JFrame {
 
         JButton botonAsistencia =
                 new JButton("Registro de asistencia");
+
+        JButton botonNotas =
+                new JButton("Registro de notas");
 
         botonEstudiantes.addActionListener(e -> {
             try {
@@ -53,9 +57,14 @@ public class MenuPrincipal extends JFrame {
             new VentanaAsistencia().setVisible(true);
         });
 
+        botonNotas.addActionListener(e -> {
+            new VentanaNotas().setVisible(true);
+        });
+
         panel.add(titulo);
         panel.add(botonEstudiantes);
         panel.add(botonAsistencia);
+        panel.add(botonNotas);
 
         add(panel);
     }

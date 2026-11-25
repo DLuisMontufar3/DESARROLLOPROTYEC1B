@@ -81,7 +81,13 @@ public class VentanaEstudiantes extends JFrame {
         add(new JScrollPane(tabla), BorderLayout.CENTER);
 
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setSize(700, 450);
+        java.awt.Rectangle pantalla = java.awt.GraphicsEnvironment
+        .getLocalGraphicsEnvironment()
+        .getMaximumWindowBounds();
+
+        setSize(Math.min(pantalla.width,Math.max(1000, (int) (pantalla.width * 0.40))),Math.min(pantalla.height, Math.max(650, (int) (pantalla.height * 0.45))));
+
+        setResizable(true);
         setLocationRelativeTo(null); 
     }
 

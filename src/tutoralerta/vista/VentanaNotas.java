@@ -59,7 +59,12 @@ public class VentanaNotas extends JFrame {
 
     public VentanaNotas() {
         setTitle("TutorAlerta - Registro de Notas");
-        setSize(780, 520);
+        java.awt.Rectangle pantalla = java.awt.GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
+
+        setSize(
+        Math.min(pantalla.width,Math.max(1100, (int) (pantalla.width * 0.40))),Math.min(pantalla.height,Math.max(700, (int) (pantalla.height * 0.45))));
+
+        setResizable(true);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 

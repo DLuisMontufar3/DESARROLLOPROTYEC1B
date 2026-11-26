@@ -5,6 +5,7 @@ import java.text.Collator;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.regex.Pattern;
 import tutoralerta.modelo.Estudiante;
 import tutoralerta.persistencia.EstudianteRepositorio;
 
@@ -14,6 +15,10 @@ import tutoralerta.persistencia.EstudianteRepositorio;
 public class EstudianteServicio {
 
     private static final String MSG_VACIOS = "Todos los campos son obligatorios.";
+
+    // Correo válido: texto antes de la arroba + "@gmail.com" (sin espacios).
+    private static final Pattern CORREO_GMAIL =
+            Pattern.compile("^[A-Za-z0-9._%+-]+@gmail\\.com$", Pattern.CASE_INSENSITIVE);
 
     private final EstudianteRepositorio repositorio;
     private final List<Estudiante> estudiantes; 
@@ -120,6 +125,11 @@ public class EstudianteServicio {
         }
         if (nombres.contains(",") || apellidos.contains(",") || correo.contains(",")) {
             throw new IllegalArgumentException("No se permiten comas en los datos.");
+        }
+        if (!CORREO_GMAIL.matcher(correo).matches()) {
+            throw new IllegalArgumentException(
+                    "El correo no es válido. Debe tener el formato nombre@gmail.com "
+                    + "(sin espacios y terminando en @gmail.com).");
         }
     }
 }

@@ -28,6 +28,7 @@ El Sprint 1 establece la base del sistema de seguimiento académico mediante la 
 
 - Registro de estudiantes mediante cédula, nombres, apellidos y correo electrónico.
 - Validación de cédula única de 10 dígitos.
+- Validación del correo electrónico: debe tener el formato `nombre@gmail.com`; en caso contrario se informa que el correo no es válido.
 - Visualización de estudiantes ordenados por apellido.
 - Edición de datos personales sin modificar la cédula.
 - Persistencia de registros.
@@ -92,7 +93,11 @@ DESARROLLOPROTYEC1B/
 - **modelo:** entidades del sistema.
 - **persistencia:** almacenamiento y recuperación de información mediante CSV.
 - **servicio:** reglas de negocio y validaciones.
-- **vista:** interfaces gráficas desarrolladas con Swing.
+- **vista:** interfaces gráficas desarrolladas con Swing:
+  - `MenuPrincipal`: ventana única del sistema; contiene el menú y muestra cada módulo dentro de la misma ventana.
+  - `PanelEstudiantes`, `PanelAsistencia` y `PanelNotas`: los tres módulos.
+  - `Estilo`: paleta de colores, fuentes y componentes visuales comunes.
+  - `Mensajes`: ventanas emergentes con título, icono y color según el tipo de mensaje.
 
 ## 7. Requisitos de ejecución
 
@@ -124,7 +129,9 @@ Desde la carpeta raíz del proyecto:
 java -jar dist/TutorAlerta.jar
 ```
 
-El menú principal permite acceder a los módulos de estudiantes, asistencia y notas.
+El sistema es una sola ventana: el menú principal permite acceder a los módulos de estudiantes, asistencia y notas, y cada módulo tiene el botón **Menú principal** para volver sin cerrar la aplicación.
+
+Los mensajes emergentes usan colores y títulos descriptivos: verde para **Cambio exitoso**, rojo para **Error** y amarillo para **Alerta**.
 
 La aplicación debe ejecutarse desde la carpeta raíz para acceder correctamente al directorio relativo `datos/`.
 
@@ -143,7 +150,7 @@ La aplicación conserva los registros después de cerrar y volver a iniciar el p
 
 El proyecto incluye un conjunto de datos para comprobar el funcionamiento de los tres módulos:
 
-- 8 estudiantes registrados.
+- 8 estudiantes registrados (con correo `@gmail.com`).
 - 1 sesión de asistencia.
 - 6 estudiantes presentes y 2 ausentes.
 - 1 evaluación registrada.
@@ -153,9 +160,9 @@ El proyecto incluye un conjunto de datos para comprobar el funcionamiento de los
 
 Durante la integración se realizaron verificaciones de:
 
-- Navegación entre los tres módulos.
+- Navegación entre los tres módulos y regreso al menú principal desde cada uno.
 - Registro y edición de estudiantes.
-- Validación de cédulas.
+- Validación de cédulas y de correos `@gmail.com`.
 - Registro de asistencia.
 - Prevención de sesiones duplicadas.
 - Validación de calificaciones.

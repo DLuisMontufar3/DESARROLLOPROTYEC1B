@@ -186,7 +186,7 @@ public class NotaServicio {
      * máximo dos decimales y dentro del rango permitido.
      * Acepta coma o punto como separador decimal.
      */
-    public BigDecimal validarNota(String texto) {
+    public static BigDecimal validarNota(String texto) {
         String t = limpiar(texto).replace(',', '.');
 
         if (t.isEmpty()) {
@@ -234,7 +234,7 @@ public class NotaServicio {
         return max + 1;
     }
 
-    private String limpiar(String texto) {
+    private static String limpiar(String texto) {
         return texto == null ? "" : texto.trim();
     }
 }
